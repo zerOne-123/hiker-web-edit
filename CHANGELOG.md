@@ -1,8 +1,8 @@
-### v1.0.3
+### v1.0.3 (_2025-09-30_)
 
-- feet: 编辑 prettier.config.js 可修改 Prettier 配置文件
-- feet: 编辑 suggestions.js 可修改建议
-- feet: monaco edit 会自动读取 type/\*.d.ts 文件，用于代码提示
+- feat: 编辑 prettier.config.js 可修改 Prettier 配置文件
+- feat: 编辑 suggestions.js 可修改建议
+- feat: monaco edit 会自动读取 type/\*.d.ts 文件，用于代码提示
 - chore(deps): 更新 axios 到 v1.12.2
 - chore(deps): 更新 monaco-edit 到 v0.53.0
 - chore(deps): 更新 prettier 到 v3.6.2
