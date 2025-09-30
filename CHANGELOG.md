@@ -1,17 +1,25 @@
-# # hiker-web-edit 插件 更新日志
+### v1.0.3
 
-## [1.0.1]
+- feet: 编辑 prettier.config.js 可修改 Prettier 配置文件
+- feet: 编辑 suggestions.js 可修改建议
+- feet: monaco edit 会自动读取 type/\*.d.ts 文件，用于代码提示
+- chore(deps): 更新 axios 到 v1.12.2
+- chore(deps): 更新 monaco-edit 到 v0.53.0
+- chore(deps): 更新 prettier 到 v3.6.2
+- chore(deps): 更新 vue 到 v3.5.22
+- chore(deps): 更新 vue-router 到 v4.5.1
+- chore(deps): 更新 @vitejs/plugin-vue 到 v6.0.1
+- chore(deps): 更新 naive-ui 到 v2.43.1
+- chore(deps): 更新 vite 到 vnpm:rolldown-vite@7.1.12 编译速度提升明显
+- chore(deps): 更新 vite-plugin-monaco-editor-esm 到 v2.0.2
+- chore(deps): 更新 esbuild 到 v0.25.10
 
-- 使用 Prettier 替换默认格式化
-- 修复 Ctrl + S 保存快捷键问题
-- 完善 hiker.d.ts 声明文件
+### v1.0.2
 
-## [1.0.2]
+- feat: 添加选择端口
 
-- 更新依赖包
-- 添加选择端口
+### v1.0.1
 
-## [1.0.3]
-
-- 更新依赖包
-- 修复一些问题
+- feat: 使用 Prettier 替换默认格式化
+- feat: 完善 hiker.d.ts 声明文件
+- fix: 修复 Ctrl + S 保存快捷键问题
