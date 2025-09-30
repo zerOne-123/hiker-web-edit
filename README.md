@@ -1,5 +1,95 @@
-# Vue 3 + Vite
+# hiker-web-edit 插件
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## 0. 更新
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+1. 删除原有的文件夹，然后解压到原位置
+2. 打开浏览器 `管理扩展` 页面，找到 `海阔视界 Web 编辑`，点击 `重新加载` 按钮
+
+> 注 1：如果换位置重新安装会丢失原有 IP 配置 和 模板数据
+> 注 2：不要覆盖，这样会有垃圾文件，如不介意者随便
+
+## 1. 安装
+
+1. 打开浏览器扩展管理界面，开启 开发人员模式
+2. 将 hiker-web-edit 插件文件夹拖入即可
+
+> 注：别用压缩包安装，这样会保存在 `C:\Users\用户名\AppData\Local\Temp` 临时文件中
+> 很容易被系统删除，也不利于修改配置文件
+
+## 2. 使用
+
+首先打开 web 编辑
+
+### 设置 IP
+
+比如我两个手机还装了个安卓模拟器
+
+192.168.249.165
+192.168.249.235
+192.168.249.71
+192.168.259.*
+192.168.259.[50-249]
+
+最后一个是 DHCP 服务范围的地址，这样基本就可以只设置一次就能自动连接了
+
+### 临时 IP
+
+这个是为了方便多个设备连接编辑用的，当然也可以开多个窗口使用
+
+比如在手机中编辑遇到要抓包的情况，就可以打开安卓模拟器添加下 IP，选中模拟器 IP
+按 CTRL + S 保存到模拟器中继续编辑
+
+### 小技巧
+
+```javascript
+// 在设置结果的数组变量前加上 /** @type layout[] */
+
+/** @type layout[] */
+let d = [];
+
+d.push({}); // 光标在大括号中，按 Ctrl + Space 会有触发建议，再次按会显示建议详情	
+setResult(d);
+```
+
+## 3. 编辑器的常用快捷键
+
+| 快捷键                     | 功能                         |
+| -------------------------- | ---------------------------- |
+| `Ctrl + S`                 | 保存规则 / 保存插件          |
+| `Shift + Alt + F`          | 格式化代码                   |
+| `Ctrl + /`                 | 切换行注释                   |
+| `Shift + Alt + A`          | 切换块注释                   |
+| Ctrl + Space               | 触发建议或显示建议详情       |
+| Ctrl + Shift + Space       | 触发参数提示                 |
+| Alt + ↑ / ↓                | 向 上 / 下 移动行            |
+| Shift + Alt + ↓ / ↑        | 向 上 / 下 复制行            |
+| Ctrl + Shift + K           | 删除行                       |
+| Ctrl + Enter               | 在下面插入行                 |
+| Ctrl + Shift + Enter       | 在上面插入行                 |
+| Ctrl + Shift + \           | 跳到匹配的括号               |
+| Ctrl + ← / →               | 光标到 字首 / 字尾           |
+| Ctrl + Shift + [ / ]       | 折叠 / 展开 区域             |
+| Ctrl + F                   | 查找                         |
+| Ctrl + H                   | 替换                         |
+| Alt + Enter                | 选择查找匹配的所有出现       |
+| Ctrl + D                   | 将选择添加到下一个查找匹配   |
+| Alt + 单击                 | 插入光标                     |
+| Ctrl + Alt + ↑ / ↓         | 在上/下插入光标              |
+| Shift + Alt + I            | 在选定的每一行的末尾插入光标 |
+| Ctrl + L                   | 选择当前行                   |
+| Ctrl + Shift + L           | 选择当前选择的所有出现       |
+| Ctrl + F2                  | 选择当前字的所有出现         |
+| Shift + Alt + → / ←        | 展开 / 缩小 选择             |
+| Shift + Alt + （拖动鼠标） | 列（框）选择                 |
+
+## 4. 几个重要的配置文件
+
+```cmd
+hiker-web-edit
+    ├─config
+    │   ├─hiker.d.ts		// 用于 编辑器 的声明文件，可以自行添加
+    │   └─suggestions.js	// 用于 编辑器 的建议，可以自定义代码片段
+	└─monaco-editor
+		└─init.js			// monaco 初始化配置，包含 Prettier 格式化配置，可自行修改
+
+```

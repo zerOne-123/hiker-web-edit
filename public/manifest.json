@@ -1,0 +1,19 @@
+{
+  "name": "海阔视界Web编辑",
+  "version": "1.0.3",
+  "manifest_version": 3,
+  "description": "海阔视界Web编辑",
+  "author": "zerOne123",
+  "homepage_url": "http://haikuoshijie.cn",
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "host_permissions": ["<all_urls>"],
+  "permissions": ["storage", "declarativeNetRequest"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "48": "icons/icon48.png"
+  }
+}
