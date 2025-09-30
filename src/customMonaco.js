@@ -1,15 +1,33 @@
-import * as monaco from "monaco-editor";
-// 配置 Monaco Editor 的 Web Worker
-self.MonacoEnvironment = (function (paths) {
-  return {
-    globalAPI: false,
-    getWorkerUrl: (moduleId, label) => paths[label],
-  };
-})({
-  editorWorkerService: "/monacoeditorwork/editor.worker.bundle.js",
-  typescript: "/monacoeditorwork/ts.worker.bundle.js",
-  javascript: "/monacoeditorwork/ts.worker.bundle.js",
-});
+// import * as monaco from "monaco-editor";
+// // 配置 Monaco Editor 的 Web Worker
+// self.MonacoEnvironment = (function (paths) {
+//   return {
+//     globalAPI: false,
+//     getWorkerUrl: (moduleId, label) => paths[label],
+//   };
+// })({
+//   editorWorkerService: "/monacoeditorwork/editor.worker.bundle.js",
+//   typescript: "/monacoeditorwork/ts.worker.bundle.js",
+//   javascript: "/monacoeditorwork/ts.worker.bundle.js",
+// });
+
+import * as monaco from "monaco-editor/esm/vs/editor/editor.api";
+import EditorWorker from "monaco-editor/esm/vs/editor/editor.worker?worker";
+import "use-features";
+
+import "monaco-editor/esm/vs/basic-languages/typescript/typescript.contribution";
+import "monaco-editor/esm/vs/language/typescript/monaco.contribution";
+import TSWorker from "monaco-editor/esm/vs/language/typescript/ts.worker?worker";
+
+self.MonacoEnvironment = {
+  getWorker(_, label) {
+    if (label === "typescript" || label === "javascript") {
+      return new TSWorker();
+    }
+    return new EditorWorker();
+  },
+};
+
 // 加载 Prettier 用于格式化
 import prettier from "prettier/standalone.mjs";
 import prettierPluginBabel from "prettier/plugins/babel.mjs";

@@ -30,18 +30,12 @@ importers:
       '@vitejs/plugin-vue':
         specifier: ^6.0.1
         version: 6.0.1(rolldown-vite@7.1.12(esbuild@0.25.10))(vue@3.5.22)
-      esbuild:
-        specifier: ^0.25.10
-        version: 0.25.10
       naive-ui:
         specifier: ^2.43.1
         version: 2.43.1(vue@3.5.22)
       vite:
         specifier: npm:rolldown-vite@7.1.12
         version: rolldown-vite@7.1.12(esbuild@0.25.10)
-      vite-plugin-monaco-editor-esm:
-        specifier: ^2.0.2
-        version: 2.0.2(monaco-editor@0.53.0)
 
 packages:
 
@@ -740,11 +734,6 @@ packages:
     peerDependencies:
       vue: ^3.0.11
 
-  vite-plugin-monaco-editor-esm@2.0.2:
-    resolution: {integrity: sha512-XVkOpL/r0rw1NpbO30vUwG4S0THkC9KB1vjjV8olGd49h4/EQsKl3DrxB6KRDwyZNC9mKiiZgk2L6njUYj3oKQ==}
-    peerDependencies:
-      monaco-editor: '>=0.33.0'
-
   vooks@0.2.12:
     resolution: {integrity: sha512-iox0I3RZzxtKlcgYaStQYKEzWWGAduMmq+jS7OrNdQo1FgGfPMubGL3uGHOU9n97NIvfFDBGnpSvkWyb/NSn/Q==}
     peerDependencies:
@@ -1124,6 +1113,7 @@ snapshots:
       '@esbuild/win32-arm64': 0.25.10
       '@esbuild/win32-ia32': 0.25.10
       '@esbuild/win32-x64': 0.25.10
+    optional: true
 
   estree-walker@2.0.2: {}
 
@@ -1345,10 +1335,6 @@ snapshots:
     dependencies:
       evtd: 0.2.4
       vue: 3.5.22
-
-  vite-plugin-monaco-editor-esm@2.0.2(monaco-editor@0.53.0):
-    dependencies:
-      monaco-editor: 0.53.0
 
   vooks@0.2.12(vue@3.5.22):
     dependencies:
