@@ -11,57 +11,57 @@ export const useImport = (ruleData, message) => {
   const onImportPositiveClick = async () => {
     try {
       let text = importText.value.trim();
-      if (text.startsWith('https://pastebin.com')) {
-        // 剪切板1
-        // https://pastebin.com/xV54MTve 小程序：APP聚合X1311
-        const api_paste_key = text.match(/com\/(\w*)/)[1];
-        const { data } = await http('https://pastebin.com/api/api_raw.php', {
-          method: 'post',
-          body: `api_option=show_paste&api_user_key=c02545bd6fcfc9dcb82b36cd8ac7be61&api_paste_key=${api_paste_key}&api_dev_key=Qs2VjmfmU1Qz-SGdXpUV6fRPquPzR0js`,
-        });
-        text = data;
-      } else if (text.startsWith('https://netcut.cn')) {
-        // 剪切板2
-        //https://netcut.cn/p/0b9ec5a505e74818 小程序：bili51bili哔哩投屏
-        const note_id = text.match(/p\/(\w*)/)[1];
-        const { data } = await http(`https://netcut.cn/api/note/data/?note_id=${note_id}`);
-        text = JSON.parse(data).data.note_content;
-      } else if (text.startsWith('https://cmd.im')) {
-        // 剪切板5
-        // https://cmd.im/b7ji 小程序：lPTV港澳台
-        const url = text.split(/[ \n]/)[0];
-        const { data } = await http(url);
-        // console.log('aa');
-        text = data.match(/海阔视界规则分享.*/)[0];
-      } else if (text.startsWith('https://pasteme.tyrantg.com')) {
-        // 剪切板6
-        // https://pasteme.tyrantg.com/xxxxxx/lyt5gjhfifzbzq44@KamPyI 小程序：lPTV港澳台
-        const url = text.split(/[ \n]/)[0].replace('xxxxxx', 'api/getContent');
-        const { data } = await http(url);
-        text = JSON.parse(data).data;
-      } else if (text.startsWith('https://note.ms')) {
-        // 剪切板7
-        // https://note.ms/uazn/x/y 小程序：lPTV港澳台
-        const url = text.split(/[ \n]/)[0].replace('/x/y', '');
-        const { data } = await http(url);
-        text = data.match(/(海阔视界规则分享.*)</)[1];
-      } else if (text.startsWith('https://txtpbbd.cn')) {
-        // 剪切板9
-        // https://txtpbbd.cn/a/b/160526xP
-        const txt_name = text.match(/b\/(\w*)/)[1];
-        const { data } = await http('https://a6.qikekeji.com/txt/data/detail/', {
-          method: 'post',
-          body: `passwork=&txt_name=${txt_name}`,
-        });
-        text = JSON.parse(JSON.parse(data).data.txt_content)[0].content;
-      } else if (text.startsWith('https://hassdtebin.com')) {
-        // 剪切板10
-        // https://hassdtebin.com/share/a/b/novoxejuto 小程序：ttttttt
-        // https://hassdtebin.com/share/a/b/faqocowita\r\n\r\n小程序：lPTV港澳台
-        const url = text.split(/[ \n]/)[0].replace('a/b/', '').replace('hassdtebin', 'hastebin');
-        const { data } = await http(url);
-        text = data.match(/"text":"(.*?)"/)[1];
-      }
+      // if (text.startsWith('https://pastebin.com')) {
+      //   // 剪切板1
+      //   // https://pastebin.com/xV54MTve 小程序：APP聚合X1311
+      //   const api_paste_key = text.match(/com\/(\w*)/)[1];
+      //   const { data } = await http('https://pastebin.com/api/api_raw.php', {
+      //     method: 'post',
+      //     body: `api_option=show_paste&api_user_key=c02545bd6fcfc9dcb82b36cd8ac7be61&api_paste_key=${api_paste_key}&api_dev_key=Qs2VjmfmU1Qz-SGdXpUV6fRPquPzR0js`,
+      //   });
+      //   text = data;
+      // } else if (text.startsWith('https://netcut.cn')) {
+      //   // 剪切板2
+      //   //https://netcut.cn/p/0b9ec5a505e74818 小程序：bili51bili哔哩投屏
+      //   const note_id = text.match(/p\/(\w*)/)[1];
+      //   const { data } = await http(`https://netcut.cn/api/note/data/?note_id=${note_id}`);
+      //   text = JSON.parse(data).data.note_content;
+      // } else if (text.startsWith('https://cmd.im')) {
+      //   // 剪切板5
+      //   // https://cmd.im/b7ji 小程序：lPTV港澳台
+      //   const url = text.split(/[ \n]/)[0];
+      //   const { data } = await http(url);
+      //   // console.log('aa');
+      //   text = data.match(/海阔视界规则分享.*/)[0];
+      // } else if (text.startsWith('https://pasteme.tyrantg.com')) {
+      //   // 剪切板6
+      //   // https://pasteme.tyrantg.com/xxxxxx/lyt5gjhfifzbzq44@KamPyI 小程序：lPTV港澳台
+      //   const url = text.split(/[ \n]/)[0].replace('xxxxxx', 'api/getContent');
+      //   const { data } = await http(url);
+      //   text = JSON.parse(data).data;
+      // } else if (text.startsWith('https://note.ms')) {
+      //   // 剪切板7
+      //   // https://note.ms/uazn/x/y 小程序：lPTV港澳台
+      //   const url = text.split(/[ \n]/)[0].replace('/x/y', '');
+      //   const { data } = await http(url);
+      //   text = data.match(/(海阔视界规则分享.*)</)[1];
+      // } else if (text.startsWith('https://txtpbbd.cn')) {
+      //   // 剪切板9
+      //   // https://txtpbbd.cn/a/b/160526xP
+      //   const txt_name = text.match(/b\/(\w*)/)[1];
+      //   const { data } = await http('https://a6.qikekeji.com/txt/data/detail/', {
+      //     method: 'post',
+      //     body: `passwork=&txt_name=${txt_name}`,
+      //   });
+      //   text = JSON.parse(JSON.parse(data).data.txt_content)[0].content;
+      // } else if (text.startsWith('https://hassdtebin.com')) {
+      //   // 剪切板10
+      //   // https://hassdtebin.com/share/a/b/novoxejuto 小程序：ttttttt
+      //   // https://hassdtebin.com/share/a/b/faqocowita\r\n\r\n小程序：lPTV港澳台
+      //   const url = text.split(/[ \n]/)[0].replace('a/b/', '').replace('hassdtebin', 'hastebin');
+      //   const { data } = await http(url);
+      //   text = data.match(/"text":"(.*?)"/)[1];
+      // }
       // 海阔视界规则分享，当前分享的是：小程序￥home_rule_v2￥base64://@测试声明@ey
       // 海阔视界规则分享，当前分享的是：小程序￥home_rule￥{"last_chapter_
       if (text.includes('￥home_rule')) {
@@ -124,34 +124,34 @@ export const useExport = (ruleData, message) => {
       label: '编码口令',
       key: 'base64PWD',
     },
-    {
-      label: '云剪切板1',
-      key: 'cloudClipboard1',
-    },
-    {
-      label: '云剪切板2',
-      key: 'cloudClipboard2',
-    },
-    {
-      label: '云剪切板5',
-      key: 'cloudClipboard5',
-    },
-    {
-      label: '云剪切板6',
-      key: 'cloudClipboard6',
-    },
-    {
-      label: '云剪切板7',
-      key: 'cloudClipboard7',
-    },
+    // {
+    //   label: '云剪切板1',
+    //   key: 'cloudClipboard1',
+    // },
+    // {
+    //   label: '云剪切板2',
+    //   key: 'cloudClipboard2',
+    // },
+    // {
+    //   label: '云剪切板5',
+    //   key: 'cloudClipboard5',
+    // },
+    // {
+    //   label: '云剪切板6',
+    //   key: 'cloudClipboard6',
+    // },
+    // {
+    //   label: '云剪切板7',
+    //   key: 'cloudClipboard7',
+    // },
     // {
     //   label: '云剪切板8',
     //   key: 'cloudClipboard8',
     // },
-    {
-      label: '云剪切板9',
-      key: 'cloudClipboard9',
-    },
+    // {
+    //   label: '云剪切板9',
+    //   key: 'cloudClipboard9',
+    // },
     // {
     //   label: '云剪切板10',
     //   key: 'cloudClipboard10',
@@ -172,102 +172,102 @@ export const useExport = (ruleData, message) => {
         // base64口令
         text = window.btoa(unescape(encodeURIComponent(text)));
         text = `海阔视界规则分享，当前分享的是：小程序￥home_rule_v2￥base64://@${title}@${text}`;
-        if (key === 'cloudClipboard1') {
-          // 云剪切板1
-          // message.error('抱歉，暂不支持');
-          const { data } = await http('https://pastebin.com/api/api_post.php', {
-            method: 'post',
-            body: `api_dev_key=Qs2VjmfmU1Qz-SGdXpUV6fRPquPzR0js&api_paste_code=${encodeURIComponent(
-              text
-            )}&api_paste_private=0&api_paste_expire_date=N&api_paste_name=小程序：${title}&api_user_key=c02545bd6fcfc9dcb82b36cd8ac7be61&api_paste_format=javascript&api_option=paste`,
-          });
-          text = `${data}\n\n小程序：${title}`;
-        } else if (key === 'cloudClipboard2') {
-          // 云剪切板2
-          const { data } = await http('https://netcut.cn/api/note/create/', {
-            method: 'post',
-            body: `note_name=cz${parseInt(Date.now() / 1000)}&note_content=${encodeURIComponent(
-              text
-            )}&note_pwd=0&expire_time=31536000`,
-          });
-          text = `https://netcut.cn/p/${JSON.parse(data).data.note_id}\n\n小程序：${title}`;
-        } else if (key === 'cloudClipboard5') {
-          const { url } = await http('https://cmd.im/', {
-            method: 'post',
-            body: `txt=${encodeURIComponent(text)}`,
-          });
-          text = `${url}\n\n小程序：${title}`;
-        } else if (key === 'cloudClipboard6') {
-          // https://pasteme.tyrantg.com/xxxxxx/lyt5gjhfifzbzq44@KamPyI 小程序：lPTV港澳台
-          // console.log(decodeURIComponent(text));
-          const { data } = await http('https://pasteme.tyrantg.com/api/create', {
-            method: 'post',
-            body: JSON.stringify({
-              lang: 'plain',
-              content: text,
-              password: Math.random().toString(36).substring(2, 8),
-            }),
-            headers: {
-              'content-type': 'application/json;charset=utf-8',
-            },
-          });
-          const json = JSON.parse(data);
-          text = `https://pasteme.tyrantg.com/xxxxxx/${json.data.path}@${json.data.password}\n\n小程序：${title}`;
-        } else if (key === 'cloudClipboard7') {
-          // https://note.ms/ekox/x/y 小程序：lPTV港澳台1
-          const { url } = await http('https://note.ms/');
-          const { data } = await http(url, {
-            method: 'post',
-            body: `&t=${encodeURIComponent(text)}`,
-            headers: {
-              referer: url,
-            },
-          });
-          if (!data) text = `${url}/x/y\n\n小程序：${title}`;
-          else throw new Error('云剪切板7请求错误');
-        } else if (key === 'cloudClipboard8') {
-          // https://paste.nugine.xyz/0w6y3iey
-          // const { data } = await http('https://paste.nugine.xyz/api/records', {
-          //   method: 'put',
-          //   body: JSON.stringify({
-          //     content: text,
-          //     expiration_seconds: 259200,
-          //     lang: 'plaintext',
-          //     title: title,
-          //   }),
-          //   mode: 'same-origin',
-          //   headers: {
-          //     'content-type': 'application/json',
-          //     referer: 'https://paste.nugine.xyz/',
-          //     'sec-fetch-site': 'same-origin',
-          //   },
-          // });
-          // text = `https://paste.nugine.xyz/api/records/${JSON.parse(data).key}\n\n小程序：${title}`
-          throw new Error('云剪切板8请求错误');
-        } else if (key === 'cloudClipboard9') {
-          // 剪切板9
-          // https://txtpbbd.cn/a/b/160526xP
-          const { data } = await http('https://a6.qikekeji.com/txt/data/save/', {
-            method: 'post',
-            body: `txt_content=[{"content":"${encodeURIComponent(
-              text
-            )}","title":"${title}"}]&passwork=&txt_name=${Math.random().toString(36).substring(2, 10)}&v_id`,
-          });
-          text = `https://txtpbbd.cn/a/b/${JSON.parse(data).data.txt_name}\n\n小程序：${title}`;
-        } else if (key === 'cloudClipboard10') {
-          // https://hassdtebin.com/share/a/b/faqocowita  小程序：lPTV港澳台
-          await http('https://www.toptal.com/developers/hastebin/api/termsAndConditions', {
-            method: 'post',
-          });
-          const { data } = await http('https://www.toptal.com/developers/hastebin/api/documents', {
-            method: 'post',
-            body: encodeURIComponent(text),
-            headers: {
-              'content-type': 'text/plain;charset=utf-8',
-            },
-          });
-          text = `https://hassdtebin.com/share/a/b/${JSON.parse(data).key}\n\n小程序：${title}`;
-        }
+        // if (key === 'cloudClipboard1') {
+        //   // 云剪切板1
+        //   // message.error('抱歉，暂不支持');
+        //   const { data } = await http('https://pastebin.com/api/api_post.php', {
+        //     method: 'post',
+        //     body: `api_dev_key=Qs2VjmfmU1Qz-SGdXpUV6fRPquPzR0js&api_paste_code=${encodeURIComponent(
+        //       text
+        //     )}&api_paste_private=0&api_paste_expire_date=N&api_paste_name=小程序：${title}&api_user_key=c02545bd6fcfc9dcb82b36cd8ac7be61&api_paste_format=javascript&api_option=paste`,
+        //   });
+        //   text = `${data}\n\n小程序：${title}`;
+        // } else if (key === 'cloudClipboard2') {
+        //   // 云剪切板2
+        //   const { data } = await http('https://netcut.cn/api/note/create/', {
+        //     method: 'post',
+        //     body: `note_name=cz${parseInt(Date.now() / 1000)}&note_content=${encodeURIComponent(
+        //       text
+        //     )}&note_pwd=0&expire_time=31536000`,
+        //   });
+        //   text = `https://netcut.cn/p/${JSON.parse(data).data.note_id}\n\n小程序：${title}`;
+        // } else if (key === 'cloudClipboard5') {
+        //   const { url } = await http('https://cmd.im/', {
+        //     method: 'post',
+        //     body: `txt=${encodeURIComponent(text)}`,
+        //   });
+        //   text = `${url}\n\n小程序：${title}`;
+        // } else if (key === 'cloudClipboard6') {
+        //   // https://pasteme.tyrantg.com/xxxxxx/lyt5gjhfifzbzq44@KamPyI 小程序：lPTV港澳台
+        //   // console.log(decodeURIComponent(text));
+        //   const { data } = await http('https://pasteme.tyrantg.com/api/create', {
+        //     method: 'post',
+        //     body: JSON.stringify({
+        //       lang: 'plain',
+        //       content: text,
+        //       password: Math.random().toString(36).substring(2, 8),
+        //     }),
+        //     headers: {
+        //       'content-type': 'application/json;charset=utf-8',
+        //     },
+        //   });
+        //   const json = JSON.parse(data);
+        //   text = `https://pasteme.tyrantg.com/xxxxxx/${json.data.path}@${json.data.password}\n\n小程序：${title}`;
+        // } else if (key === 'cloudClipboard7') {
+        //   // https://note.ms/ekox/x/y 小程序：lPTV港澳台1
+        //   const { url } = await http('https://note.ms/');
+        //   const { data } = await http(url, {
+        //     method: 'post',
+        //     body: `&t=${encodeURIComponent(text)}`,
+        //     headers: {
+        //       referer: url,
+        //     },
+        //   });
+        //   if (!data) text = `${url}/x/y\n\n小程序：${title}`;
+        //   else throw new Error('云剪切板7请求错误');
+        // } else if (key === 'cloudClipboard8') {
+        //   // https://paste.nugine.xyz/0w6y3iey
+        //   // const { data } = await http('https://paste.nugine.xyz/api/records', {
+        //   //   method: 'put',
+        //   //   body: JSON.stringify({
+        //   //     content: text,
+        //   //     expiration_seconds: 259200,
+        //   //     lang: 'plaintext',
+        //   //     title: title,
+        //   //   }),
+        //   //   mode: 'same-origin',
+        //   //   headers: {
+        //   //     'content-type': 'application/json',
+        //   //     referer: 'https://paste.nugine.xyz/',
+        //   //     'sec-fetch-site': 'same-origin',
+        //   //   },
+        //   // });
+        //   // text = `https://paste.nugine.xyz/api/records/${JSON.parse(data).key}\n\n小程序：${title}`
+        //   throw new Error('云剪切板8请求错误');
+        // } else if (key === 'cloudClipboard9') {
+        //   // 剪切板9
+        //   // https://txtpbbd.cn/a/b/160526xP
+        //   const { data } = await http('https://a6.qikekeji.com/txt/data/save/', {
+        //     method: 'post',
+        //     body: `txt_content=[{"content":"${encodeURIComponent(
+        //       text
+        //     )}","title":"${title}"}]&passwork=&txt_name=${Math.random().toString(36).substring(2, 10)}&v_id`,
+        //   });
+        //   text = `https://txtpbbd.cn/a/b/${JSON.parse(data).data.txt_name}\n\n小程序：${title}`;
+        // } else if (key === 'cloudClipboard10') {
+        //   // https://hassdtebin.com/share/a/b/faqocowita  小程序：lPTV港澳台
+        //   await http('https://www.toptal.com/developers/hastebin/api/termsAndConditions', {
+        //     method: 'post',
+        //   });
+        //   const { data } = await http('https://www.toptal.com/developers/hastebin/api/documents', {
+        //     method: 'post',
+        //     body: encodeURIComponent(text),
+        //     headers: {
+        //       'content-type': 'text/plain;charset=utf-8',
+        //     },
+        //   });
+        //   text = `https://hassdtebin.com/share/a/b/${JSON.parse(data).key}\n\n小程序：${title}`;
+        // }
       }
       navigator.clipboard.writeText(text).catch(() => {
         const readOnlyTextArea = document.createElement('textarea');
