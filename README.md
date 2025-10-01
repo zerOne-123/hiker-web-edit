@@ -86,10 +86,10 @@ setResult(d);
 
 ```cmd
 hiker-web-edit
-    ├─config
-    │   ├─hiker.d.ts		// 用于 编辑器 的声明文件，可以自行添加
-    │   └─suggestions.js	// 用于 编辑器 的建议，可以自定义代码片段
-	└─monaco-editor
-		└─init.js			// monaco 初始化配置，包含 Prettier 格式化配置，可自行修改
+    ├─type                  // 用于 编辑器 的声明文件，可以自行添加
+    │   ├─hiker.d.ts
+    │   └─CryptoJS.d.ts
+	│─suggestions.js         // 用于 编辑器 的建议，可以自定义代码片段
+	│─prettier.config.js	 // Prettier 格式化配置
 
 ```
