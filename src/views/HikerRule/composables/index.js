@@ -163,6 +163,7 @@ export const useExport = (ruleData, message) => {
       message.error('规则名不存在');
       return;
     }
+    ruleData.value.pages = JSON.stringify(ruleData.value.pageList);
     let text = JSON.stringify(ruleData.value);
     try {
       if (key === 'plaintextPWD') {
