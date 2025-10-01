@@ -1,6 +1,7 @@
-### v1.0.4 (_2025-09-30_)
+### v1.0.4 (_2025-10-01_)
 
 - feat: monaco-editor 打包优化，原来 18MB 减少到现在 11MB，减少了约 38.89%
+- fix: 更新版本号至 1.0.4，并在导出规则中修正页面数据处理
 - chore(deps): 删除 vite-plugin-monaco-editor-esm 依赖
 - chore(deps): 删除 esbuild 依赖
 
